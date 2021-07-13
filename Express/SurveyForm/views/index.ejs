@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey</title>
+</head>
+<body>
+		<div class="">
+			<form action='/result' method='post' class="">
+				<div class="">
+					<h2>Survey</h2>
+				</div>
+					<div class="">
+						<label class="">Your Name:</label>
+						<div class="">
+							<input class="input" type="text" name="name" placeholder="Joe Shmoe">
+						</div>
+					</div>
+					<div class="">
+						<label class="">Dojo Location:</label>
+						<div class="">
+							<select name="location" id="dojo_location">
+								<option value="Dallas">Dallas</option>
+								<option value="Chicago">Chicago</option>
+							</select>
+						</div>
+					</div>
+					<div class="">
+						<label class="">Favourite Languages:</label>
+						<div class="select">
+							<select name="fav_lang" id="fav_lang">
+								<option value="C#">C#</option>
+								<option value="MEAN">MEAN</option>
+								<option value="Python">Python</option>
+								<option value="Java">Java</option>
+							</select>
+						</div>
+					</div>
+					<div class="">
+						<label class="label">Comment (optional):</label>
+						<textarea class="textarea" placeholder="e.g. I love this!" name="comment"></textarea>
+					</div>
+				<button class="" type="submit">Submit</button>
+			</form>
+		</div>
+</body>
+</html>
