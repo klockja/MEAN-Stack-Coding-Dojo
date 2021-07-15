@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Board</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body class="container my-5">
+    <h3>The Dojo Message Board</h3>
+    <hr>
+    <% if (errors.length > 0) { %>
+        <div class="">
+            <ul>
+                <% for(var err of errors) { %>
+                <li style="color: red;"><%= err %></li>
+                <% } %>
+            </ul>
+        </div>
+    <% } %>
+    <form action="/post" method="post">
+        <label for="name">Name: </label><br>
+        <input type="text" name="post_name" id="">
+        <br><br>
+        <label for="post_content">Post content: </label><br>
+        <textarea name="post_content" cols="30" rows="2"></textarea>
+        <br>
+        <input type="submit" class="btn btn-primary" value="Post">
+    </form>
+    <br><br>
+    <h4>Post Feed</h4>
+    <hr>
+    <% for(var i = posts.length - 1; i >= 0; i--) { %>
+        <div>
+            <h5>Name: <%= posts[i].name %></h5> 
+        </div>
+        <div>
+            <p>Message: <%= posts[i].content %></p>
+        </div>
+        <div>
+            <ul>
+            <% for(var p = 0; p <= posts[i].comments.length - 1; p++) { %>
+                <li>
+                    <h6><%= posts[i].comments[p].name %></h6>
+                    <p><%= posts[i].comments[p].content %></p>
+                </li>
+            <% } %>
+            </ul>
+        </div>
+        <form action="/comment/<%=posts[i]._id%>" method="post">
+            <div class="">
+                <label class="label">Name: </label><br>
+                <input class="input" type="text" name="comment_name">
+            </div>
+            <div class="">
+                <label class="">Message: </label><br>
+                <textarea class="" cols="30" rows="1" name="comment_content" placeholder="Insert message here"></textarea>
+            </div>
+            <div class="">
+                <button class="btn btn-outline-secondary">Comment</button>
+            </div>
+        </form>
+        <br>
+    <% } %>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuotingDojo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <section class="section">
+		<div class="container">
+			<% if (errors.length > 0) { %>
+			<div class="">
+				<ul>
+					<% for(var e of errors) { %>
+					<li><%= e %></li>
+					<% } %>
+				</ul>
+			</div>
+			<div class=""></div> 
+			<% } %>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="">
+						<h3 class="">Add Quote</h3>
+						<form action="/quotes" method="POST">
+							<div class="">
+								<label class="">Author</label>
+								<div class="">
+									<input class="" type="text" name="author" placeholder="e.g. Emily Dickens">
+								</div>
+							</div>
+							<div class="">
+								<label class="">Quote</label>
+								<div class="">
+									<textarea class="textarea" name="text" placeholder="Quote goes here."></textarea>
+								</div>
+							</div>
+							<input type="submit" class="btn btn-primary" value="Submit">
+						</form>
+						<div class=""></div>
+						<a href="/quotes"><button class="btn btn-outline-success" name="skip">Show Quotes</button></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
