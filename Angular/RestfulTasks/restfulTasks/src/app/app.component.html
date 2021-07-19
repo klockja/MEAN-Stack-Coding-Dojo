@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Restful Tasks</title>
+</head>
+<body>
+	<section class="section has-background-dark">
+		<div class="container">
+			<p class="display-4 fw-bold">Restful Tasks API</p>
+				<div class="">
+					<div class="box">
+						<div class="row p-3 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+							<h3 class="">All Tasks</h3>
+							<div *ngIf="tasks">
+								<button class="btn btn-outline-primary" (click)="onButtonClick($event)">Show all tasks</button>
+								<ul>
+									<li class="mt-4" *ngFor='let task of tasks; let i = index'>
+                    {{task.title}} - Done: {{task.completed}}
+                    <button class="btn btn-outline-info mx-1" (click)="showTask(task)">About</button>
+                    <button class="btn btn-outline-warning mx-1" (click)="editButton(task)">Edit</button>
+                    <button class="btn btn-outline-danger mx-1" (click)="delButton(task)">Delete</button>
+                  </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+        <app-task *ngIf="selectedTask" [showTask]="selectedTask"></app-task>
+				<div *ngIf="edit_task" class="row p-3 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+					<div class="box">
+						<form (submit)="onEditSubmit()">
+							<h1 class="title">Edit</h1>
+							<div class="field">
+								<label class="label">Title</label>
+								<div class="control">
+									<input class="input" type="text" name="title" [(ngModel)]="edit_task.title">
+								</div>
+							</div>
+							<div class="field">
+								<label class="label">Description</label>
+								<div class="control">
+									<input class="input" type="text" name="description" [(ngModel)]="edit_task.description">
+								</div>
+							</div>
+							<div class="field">
+								<label class="checkbox">Done?</label>
+									<input class="checkbox" type="checkbox" name="completed" [(ngModel)]="edit_task.completed">
+							</div>
+							<input type="submit" class="btn btn-outline-warning" value="Update task">
+						</form>
+					</div>
+				</div>
+					<div class="row my-4 p-3 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+						<form (submit)="onSubmit()">
+							<h1 class="title">Add a task</h1>
+							<div class="field">
+								<label class="label">Title</label>
+								<div class="control">
+									<input class="input" type="text" name="title" [(ngModel)]="newTask.title">
+								</div>
+							</div>
+							<div class="field">
+								<label class="label">Description</label>
+								<br>
+								<input class="input" type="text" name="description" [(ngModel)]="newTask.description">
+							</div>
+							<input type="submit" class="btn btn-outline-success my-2" value="Create task">
+						</form>
+				</div>
+		</div>
+	</section>
+</body>
+</html>
