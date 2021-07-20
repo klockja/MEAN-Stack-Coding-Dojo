@@ -33,24 +33,38 @@ export class AppComponent implements OnInit {
 
 	selectedTask: any;
 	showTask(task) {
-		this.selectedTask = task;
+    if(task != this.selectedTask)
+    {
+		  this.selectedTask = task;
+    }
+    else
+    {
+      this.selectedTask = null;
+    }
 	}
 
 	edit_task: String;
 	editButton(task) {
-		this.edit_task = task;
+    if(task != this.edit_task)
+		  this.edit_task = task;
+    else
+      this.edit_task = null;
 	}
 
 	onEditSubmit() {
 		this._httpService.updateTask({'title':this.edit_task['title'], 'description':this.edit_task['description'], 'completed':this.edit_task['completed']}, this.edit_task['_id'])
+    this.edit_task = "";
+    this.getTasksFromService();
 	}
 
 	delButton(task) {
 		this._httpService.delTask(task['_id'])
+    this.getTasksFromService();
 	}
 
 	onSubmit() {
 		this._httpService.addTask({'title':this.newTask['title'], 'description':this.newTask['description']})
 		this.newTask = { title: "", description: ""}
+    this.getTasksFromService();
 	}
 }
