@@ -1,0 +1,26 @@
+<div class="col-12 card p-2">
+  <span class="">Baked by: {{cakeToShow.baker}}</span>
+  <div class="row">
+    <div class="col-9">
+      <div class="card">
+        <img src="{{cakeToShow.image}}" height="100%" width="175" alt="Cake picture">
+      </div>
+      <div class="card">
+        <div class="">
+          <p class="">{{cakeToShow.description}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-3">
+        <div class="content">
+          <p class="title has-text-centered">Average rating: {{ avgRating(cakeToShow) }}</p>
+          <ul>
+            <li *ngFor='let rating of cakeToShow.ratings.reverse()'>
+              <p>Rating: {{rating.stars}}</p>
+              <p class="">{{rating.content}}</p>
+            </li>
+          </ul>
+        </div>
+    </div>
+  </div>
+</div>

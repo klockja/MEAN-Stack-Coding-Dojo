@@ -28,7 +28,7 @@
 						</div>
 					</div>
 				</div>
-        <app-task *ngIf="selectedTask" [showTask]="selectedTask"></app-task>
+        <app-task *ngIf="selectedTask" [taskToShow]="selectedTask"></app-task>
 				<div *ngIf="edit_task" class="row p-3 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
 					<div class="box">
 						<form (submit)="onEditSubmit()">

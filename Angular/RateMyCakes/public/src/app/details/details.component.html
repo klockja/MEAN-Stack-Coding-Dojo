@@ -1,0 +1,28 @@
+<div class="cakes">
+  <div *ngFor='let cake of cakesToShow; let i = index' class="row my-2 border-2">
+    <div class="col-6 rounded mx-auto d-block">
+      <a (click)="emitCake(cake)"><img src="{{cake.image}}" height="175" max-width="100%" alt="Cake picture"></a>
+    </div>
+    <div class="col-6">
+      <form (submit)="submitRating(cake._id)">
+        <p class="">Leave a review</p>
+        <div class="field">
+          <label class="label">Rating</label>
+          <div class="control">
+            <div class="select">
+              <select name="stars" [(ngModel)]="newRating.stars">
+                <option *ngFor='let i of [5,4,3,2,1]' [value]="i">{{i}} Stars</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Comment</label>
+          <br>
+          <textarea class="textarea" placeholder="e.g. This rocks!" name="content" width="100%" [(ngModel)]="newRating.content"></textarea>
+        </div>
+        <button class="btn btn-success">Submit Rating</button>
+      </form>
+    </div>
+  </div>
+</div>

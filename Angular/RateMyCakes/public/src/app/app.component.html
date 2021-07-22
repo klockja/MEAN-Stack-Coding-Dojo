@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <h2 class="my-4">Cake Rate!</h2>
+    <div class="add-cake col-4 card p-2">
+      <h4 class="mb-3">Submit a Cake for Rating</h4>
+      <form (submit)="onSubmit()">
+        <div class="">
+          <div class="col-12 my-2">
+            <label class="form-label" for="baker">Baker's Name:</label>
+            <input class= "form-control" type="text" name="baker" placeholder="e.g. Mrs. Jones" [(ngModel)]="newCake.baker">
+          </div>
+          <div class="col-12 my-2">
+            <label class="form-label" for="image">Image URL:</label>
+            <input class= "form-control" type="text" name="image" placeholder="e.g. https://example.com/image.jpg" [(ngModel)]="newCake.image">
+          </div>
+          <div class="col-12 my-2">
+            <label class="form-label" for="description">Description:</label>
+            <input class= "form-control" type="text" name="description" placeholder="e.g. A delicious birthday cake!" [(ngModel)]="newCake.description">
+          </div>
+          <button class="btn btn-primary my-2" type="submit" name="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-8 card p-2">
+      <app-details (cakeEvent)="cakeEventHandler($event)" [cakesToShow]="cakes.reverse()"></app-details>
+    </div>
+    <app-single-details *ngIf="selectedCake" [cakeToShow]="selectedCake"></app-single-details>
+  </div>
+</div>
