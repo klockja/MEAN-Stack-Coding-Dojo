@@ -1,0 +1,17 @@
+<div class="container">
+	<div class="row border-lg p-4">
+		<div class="col-6 card">
+      <h3 class="">Washington D.C.</h3>
+			<ul>
+				<li><span class="">Humidity:</span> {{weather.main.humidity}}</li>
+				<li><span class="">Temperature (Average):</span> {{weather.main.temp}}</li>
+				<li><span class="">Temperature (High):</span> {{weather.main.temp_max}}</li>
+				<li><span class="">Temperature (Low):</span> {{weather.main.temp_min}}</li>
+				<li><span class="">Status:</span> {{weather.weather[0].main}} - {{weather.weather[0].description}}</li>
+			</ul>
+		</div>
+		<div class="col-6 d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+			<img class="mx-auto overflow-hidden" src="https://images.pexels.com/photos/261093/pexels-photo-261093.jpeg" height="325" alt="city">
+		</div>
+	</div>
+</div>
