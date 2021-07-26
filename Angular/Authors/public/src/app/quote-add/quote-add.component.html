@@ -1,0 +1,25 @@
+<a [routerLink]="['/']" class="">Home</a>
+<h3 *ngIf="editAuthor">Add a quote by {{editAuthor.name}}</h3>
+<div>
+  <ul *ngFor="let error of error_set | keyvalue">
+    <ng-container *ngIf='error.key == "quotes.0.content"'>
+      <ng-container *ngFor='let subItem of error.value | keyvalue'>
+          <ng-container *ngFor='let subSubItem of subItem.value | keyvalue'>
+            <li *ngIf='subSubItem.value == "required"'>Quote needs content</li>
+            <li *ngIf='subSubItem.value == "minlength"'>Quote content should be at least 3 characters</li>
+          </ng-container>
+      </ng-container>
+    </ng-container>
+  </ul>
+</div>
+<div>
+  <form (submit)="onSubmit()">
+    <div>
+      <label>Name: </label>
+      <div>
+        <input class="" type="text" name="quote_content" *ngIf="editAuthor" [(ngModel)]="newQuote.content" placeholder="e.g. Blah blah blah">
+      </div>
+      <input type="submit" class="btn" value="Submit">
+    </div>
+  </form>
+</div>

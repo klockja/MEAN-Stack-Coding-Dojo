@@ -1,0 +1,20 @@
+<h3 class="">Edit Author</h3>
+<div class="container">
+	<div class="">
+		<form (submit)="onEditSubmit()">
+			<div class="field">
+				<label class="label">Name:</label>
+				<div class="control">
+					<input
+						class="input"
+						type="text"
+						name="name"
+						*ngIf="editAuthor"
+						[(ngModel)]="editAuthor.name"
+					/>
+				</div>
+			</div>
+			<input class="btn btn-success" type="submit" value="Submit"/>
+		</form>
+	</div>
+</div>

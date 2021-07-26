@@ -1,0 +1,25 @@
+<h3>Add New Author</h3>
+<div>
+  <div>
+    <ul *ngFor="let error of error_set | keyvalue">
+      <ng-container *ngIf='error.key == "name"'>
+        <ng-container *ngFor='let subItem of error.value | keyvalue'>
+          <li *ngIf='subItem.value == "required"'>Name must not be empty</li>
+          <li *ngIf='subItem.value == "minlength"'>Name must be at least three characters</li>
+        </ng-container>
+      </ng-container>
+    </ul>
+  </div>
+</div>
+
+<div class="container">
+		<form (submit)="onSubmit()">
+			<div class="field">
+				<label class="label">Name:</label>
+				<div class="control">
+					<input class="input" type="text" name="author_name" [(ngModel)]="newAuthor.name" placeholder="e.g. Erin Hunter"/>
+				</div>
+			</div>
+			<input class="btn btn-primary" type="submit" value="Submit" />
+		</form>
+</div>
